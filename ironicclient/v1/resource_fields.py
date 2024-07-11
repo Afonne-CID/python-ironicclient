@@ -606,6 +606,23 @@ DEPLOY_TEMPLATE_RESOURCE = Resource(
      ],
 )
 
+# Runbooks
+RUNBOOK_DETAILED_RESOURCE = Resource(
+    ['uuid',
+     'name',
+     'steps',
+     'extra',
+     'created_at',
+     'updated_at',
+     ],
+    sort_excluded=['extra', 'steps']
+)
+
+RUNBOOK_RESOURCE = Resource(
+    ['uuid',
+     'name',
+     ],
+)
 
 NODE_HISTORY_RESOURCE = Resource(
     ['uuid',

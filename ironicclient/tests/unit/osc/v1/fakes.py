@@ -235,6 +235,22 @@ DEPLOY_TEMPLATE = {
     'steps': baremetal_deploy_template_steps,
     'extra': baremetal_deploy_template_extra,
 }
+
+baremetal_runbook_uuid = 'ddd-tttttt-dddd'
+baremetal_runbook_name = 'CUSTOM_AWESOME'
+baremetal_runbook_steps = json.dumps([{
+    'interface': 'raid',
+    'step': 'create_configuration',
+    'args': {},
+    'order': 1
+}])
+baremetal_runbook_extra = {'key1': 'value1', 'key2': 'value2'}
+RUNBOOK = {
+    'uuid': baremetal_runbook_uuid,
+    'name': baremetal_runbook_name,
+    'steps': baremetal_runbook_steps,
+    'extra': baremetal_runbook_extra,
+}
 NODE_HISTORY = [
     {
         'uuid': 'abcdef1',

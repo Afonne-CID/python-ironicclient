@@ -289,18 +289,21 @@ class CleanBaremetalNode(ProvisionStateWithWait):
 
     def get_parser(self, prog_name):
         parser = super(CleanBaremetalNode, self).get_parser(prog_name)
+        clean_group = parser.add_mutually_exclusive_group(required=True)
 
-        parser.add_argument(
+        clean_group.add_argument(
             '--clean-steps',
             metavar='<clean-steps>',
-            required=True,
-            default=None,
             help=_("The clean steps. May be the path to a YAML file "
                    "containing the clean steps; OR '-', with the clean steps "
                    "being read from standard input; OR a JSON string. The "
                    "value should be a list of clean-step dictionaries; each "
                    "dictionary should have keys 'interface' and 'step', and "
                    "optional key 'args'."))
+        clean_group.add_argument(
+            '--runbook',
+            metavar='<runbook>',
+            help=_("The identifier of a predefined runbook to use for cleaning."))
         return parser
 
 
@@ -312,18 +315,21 @@ class ServiceBaremetalNode(ProvisionStateWithWait):
 
     def get_parser(self, prog_name):
         parser = super(ServiceBaremetalNode, self).get_parser(prog_name)
+        clean_group = parser.add_mutually_exclusive_group(required=True)
 
-        parser.add_argument(
+        clean_group.add_argument(
             '--service-steps',
             metavar='<service-steps>',
-            required=True,
-            default=None,
             help=_("The service steps. May be the path to a YAML file "
                    "containing the service steps; OR '-', with the service "
                    " steps being read from standard input; OR a JSON string. "
                    "The value should be a list of service-step dictionaries; "
                    "each dictionary should have keys 'interface' and 'step', "
                    "and optional key 'args'."))
+        clean_group.add_argument(
+            '--runbook',
+            metavar='<runbook>',
+            help=_("The identifier of a predefined runbook to use for cleaning."))
         return parser
 
 
